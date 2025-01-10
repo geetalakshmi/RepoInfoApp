@@ -33,7 +33,8 @@ public class GithubController {
         // Generating the HTML report
         StringBuilder report = new StringBuilder();
         report.append("<html><head><title>Public Repositories Report</title></head><body>");
-        report.append("<h1>Public Repositories for ").append(username).append("</h1>");
+        // report.append("<h1>Public Repositories for
+        // ").append(username).append("</h1>");
         report.append("<table border='1'>");
         report.append("<tr><th>#</th><th>Repo Name</th><th>URL</th><th>Description</th><th>Stars</th></tr>");
 

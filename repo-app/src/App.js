@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import RepoInfo from './pages/RepoInfo';
 import './myStyle.css';
-//import ReportComponent from './components/ReportComponent'; 
+import ReportComponent from './components/ReportComponent'; 
 
 
 
@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/repo" element={<RepoInfo />} />
-            
+            <Route path="/repo/:username" element={<ReportComponent />} />
           </Routes>
         </main>
         <footer className="footer">

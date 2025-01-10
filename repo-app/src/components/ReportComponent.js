@@ -1,31 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const ReportComponent = () => {
   const [report, setReport] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { username } = useParams();
+
 
   useEffect(() => {
     const fetchReport = async () => {
+      if (!username) return;
+
+      setLoading(true);
       try {
-        const response = await fetch('http://localhost:8080/repos/kubernetes/report');
+        console.log('Fetching report...');
+        const response = await fetch(`http://localhost:8080/repos/${username}/report`);
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         //const data = await response.json();
         const data = await response.text()
         setReport(data);
       } catch (error) {
         console.error('Error fetching report:', error);
+        alert('Failed to fetch report');
+      }
+      finally {
+        setLoading(false);
       }
     };
 
-    fetchReport();
-  }, []);
-
-  if (!report) {
-    return <div>Loading report...</div>;
+    if (username) { // Only fetch if username is valid
+      fetchReport();
   }
+  }, [username]);
+
+  if (loading) {
+    return <div>Loading report...</div>; // Use loading state here
+}
 
   return (
     <div>
-      <h2>Kubernetes Report</h2>
-      <div dangerouslySetInnerHTML={{ __html: report }} /> {/* Change this line */}
+      <h2>Repository Report for {username}</h2>
+      {report ? (
+        <div dangerouslySetInnerHTML={{ __html: report }} />
+      ) : (
+        <p>No report available. Please enter a valid username.</p>
+      )}
     </div>
   );
 };
