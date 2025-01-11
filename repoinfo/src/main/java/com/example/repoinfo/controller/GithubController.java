@@ -32,10 +32,22 @@ public class GithubController {
 
         // Generating the HTML report
         StringBuilder report = new StringBuilder();
-        report.append("<html><head><title>Public Repositories Report</title></head><body>");
-        // report.append("<h1>Public Repositories for
-        // ").append(username).append("</h1>");
-        report.append("<table border='1'>");
+        report.append("<html><head><title>Public Repositories Report</title>");
+
+        // Adding CSS styles directly in the HTML
+        report.append("<style>")
+                .append("body { font-family: Arial, sans-serif; margin: 20px; }")
+                .append("h1 { color: #333; text-align: center; }")
+                .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                .append("th, td { padding: 12px; text-align: left; border: 1px solid #ddd; }")
+                .append("th { background-color: #4CAF50; color: white; }")
+                .append("tr:nth-child(even) { background-color: #f2f2f2; }")
+                .append("tr:hover { background-color: #ddd; }")
+                .append("</style>");
+
+        report.append("</head><body>");
+        report.append("<h1>Public Repositories for ").append(username).append("</h1>");
+        report.append("<table>");
         report.append("<tr><th>#</th><th>Repo Name</th><th>URL</th><th>Description</th><th>Stars</th></tr>");
 
         if (reposList != null && !reposList.isEmpty()) {
