@@ -23,21 +23,43 @@ body {
   }
   
   .logo {
-    width: 50px;
+    width: 40px;
   }
-  
   .search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 620px; /* Adjust as needed */
+    width: 170%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #edba11; /* Light gray border */
+  }
+  
+  .search-input {
     flex-grow: 1;
-    margin: 0 20px;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
+    height: 100%;
+    padding: 0 10px; /* Padding for text */
     border: none;
+    font-size: 16px; /* Font size */
   }
   
+  .search-button {
+    width: 45px; /* Width of the button */
+    height: 100%;
+    background-color: #fef668; /* Amazon yellow */
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #fae97c; /* Darker yellow on hover */
+  }
+  
+  .search-button svg {
+    color: #000; /* Icon color */
+  }
+  
+
   .nav-links {
     display: flex;
     list-style-type: none;
